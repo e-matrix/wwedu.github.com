@@ -10,7 +10,7 @@ require File.expand_path('../lib/helpers', __FILE__)
 task :default => 'build'
 
 task :build do
-  puts "Building http://iboard.github.com ...."
+  puts "Building " + File.basename( File.expand_path('..',__FILE__) )
   build_index
 end
 
@@ -18,7 +18,7 @@ def build_index
   puts "# WRITE INDEX ..."
   write_index
   Dir.glob("pages/*haml.erb") do |file|
-    printf "# MAKE FILE #{file}"
+    printf "\n# MAKE FILE #{file}: "
     make_file(file)
     puts ""
   end
